@@ -1,0 +1,22 @@
+[Service]
+Restart=always
+
+[Container]
+ContainerName=pihole
+Image=docker.io/pihole/pihole:latest
+Label="io.containers.autoupdate=registry"
+Environment=TZ=America/Vancouver
+Environment=SERVERIP=10.0.0.30
+#
+# Change set_your_own_password to something else.
+Environment=WEBPASSWORD=set_your_own_password
+#
+PodmanArgs=--dns=127.0.0.1 --dns=8.8.8.8
+Volume=pihole-etc.volume:/etc/pihole:z
+Volume=pihole-dnsmasq.volume:/etc/dnsmasq.d:z
+PublishPort=53:53/tcp
+PublishPort=53:53/udp
+PublishPort=80:80/tcp
+
+[Install]
+WantedBy=default.target
