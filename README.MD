@@ -100,7 +100,7 @@ systemctl --user edit podman-auto-update.timer
 
 It's when you run your container as a regular user and not as root. [You can read more about it here](https://developers.redhat.com/blog/2020/09/25/rootless-containers-with-podman-the-basics).
 
-### Why can't I do with with a docker-compose file and docker?
+### Why can't I do this with a docker-compose file and docker?
 Sure you can. Go right ahead.
 
 ### Don't I need to download the container from the docker registry first?
