@@ -5,7 +5,7 @@ For more information about the Pi-hole container, [go here](https://hub.docker.c
 
 For more information about Quadlet, please read [this](https://www.redhat.com/sysadmin/multi-container-application-podman-quadlet) and [this](https://www.redhat.com/sysadmin/quadlet-podman).
 
-This repo contains configuration files that enable you to quickly set up Pi-hole to run as a rootless container service on Red Hat Enterprise Linux. *You can get a free Red Hat Enterprise Linux license by simply registering for a new account at https://console.redhat.com*. Read more about it [here](https://developers.redhat.com/articles/faqs-no-cost-red-hat-enterprise-linux).
+This repo contains configuration files that enable you to quickly set up Pi-hole to run as a rootless container service on Red Hat Enterprise Linux. *You can get 16 free Red Hat Enterprise Linux licenses and access to Red Hat Insights by simply registering for a new account at https://console.redhat.com*. Read more about it [here](https://developers.redhat.com/articles/faqs-no-cost-red-hat-enterprise-linux).
 
 ## Set up
 
