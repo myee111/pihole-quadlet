@@ -7,7 +7,15 @@ For more information about Quadlet, please read [this](https://www.redhat.com/sy
 
 This repo contains configuration files that enable you to quickly set up Pi-hole to run as a rootless container service on Red Hat Enterprise Linux. *You can get 16 free Red Hat Enterprise Linux licenses and access to Red Hat Insights by simply registering for a new account at https://console.redhat.com*. Read more about it [here](https://developers.redhat.com/articles/faqs-no-cost-red-hat-enterprise-linux).
 
+These instructions will probably work in the latest version of Fedora. They will definitely work in RHEL 9.2. 
+
 ## Set up
+
+### Install RHEL container tools
+
+```bash
+dnf install -y container-tools
+```
 
 ### Enable unprivileged access to port 53
 
