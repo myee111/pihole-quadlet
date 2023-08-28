@@ -9,15 +9,9 @@ This repo contains configuration files that enable you to quickly set up Pi-hole
 
 ## Set up
 
-## Make systemd user services persist
-
-```bash
-loginctl enable-linger <user>
-```
-
 ### Enable unprivileged access to port 53
 
-You need to do this or Pi-hole won't work. 
+You need to do this or Pi-hole won't work. Make this change as the root user.
 
 Add this to `/etc/sysctl.conf`:
 
@@ -27,12 +21,23 @@ net.ipv4.ip_unprivileged_port_start = 53
 
 Then run `systctl -p` to enable the change.
 
+--- 
+
+**Perform the remaining actions as a non-root user.**
+
+---
+## Make systemd user services persist
+
+```bash
+loginctl enable-linger <user>
+```
+
 ### Clone this repository
 
 Clone this repository.
 
 ```
-git clone pihole-quadlet
+git clone https://github.com/myee111/pihole-quadlet.git
 ```
 ### Create directories in your home directory
 Create the directory needed for Podman to find your configuration files.
