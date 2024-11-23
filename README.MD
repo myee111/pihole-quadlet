@@ -29,6 +29,18 @@ net.ipv4.ip_unprivileged_port_start = 53
 
 Then run `systctl -p` to enable the change.
 
+### Disable systemd-resolved DNS stub listener
+
+```bash
+cat <<EOF > /etc/systemd/resolved.conf.d/no-stub.conf
+[Resolve]
+DNS=127.0.0.1
+DNSStubListener=no
+EOF
+
+systemctl restart systemd-resolved
+```
+
 --- 
 
 **Perform the remaining actions as a non-root user.**
