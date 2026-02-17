@@ -7,16 +7,29 @@ Image=docker.io/pihole/pihole:latest
 Label="io.containers.autoupdate=registry"
 Environment=TZ=America/Vancouver
 Environment=SERVERIP=10.0.0.30
-#
-# Change set_your_own_password to something else.
-Environment=WEBPASSWORD=set_your_own_password
+
+# set your own password
+Environment=FTLCONF_webserver_api_password=super_secure_password
+Environment=FTLCONF_dns_listeningMode=ALL
 #
 PodmanArgs=--dns=127.0.0.1 --dns=8.8.8.8
+
 Volume=pihole-etc.volume:/etc/pihole:z
-Volume=pihole-dnsmasq.volume:/etc/dnsmasq.d:z
+# Relevant for migrating from pihole v5
+# Volume=pihole-dnsmasq.volume:/etc/dnsmasq.d:z
+
 PublishPort=53:53/tcp
 PublishPort=53:53/udp
 PublishPort=80:80/tcp
+PublishPort=443:443/udp
+# Uncomment the line below if you are using Pi-hole as your DHCP server
+# PublishPort=67:67/udp
+# Uncomment the line below if you are using Pi-hole as your NTP server
+# PublishPort=123:123/udp
+
+# Capabilities (Commented out by default, enabled for DHCP/NTP)
+# AddCapability=NET_ADMIN
+# AddCapability=SYS_TIME
 
 [Install]
 WantedBy=default.target
