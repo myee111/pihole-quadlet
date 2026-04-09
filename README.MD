@@ -138,6 +138,26 @@ The configuration files `pihole-etc.volume` and `pihole-dnsmasq.volume` tell Pod
 
 Specifically, look for `systemd-pihole-dnsmasq` and `systemd-pihole-etc` (unless you changed the name of the volume files).
 
+### Can I avoid setting the sysctl setting thus not allowing containers to open ports < 1024?
+
+A workaround from @jeroendev.
+
+```
+# Enable masquerade
+firewall-cmd --permanent --zone=public --add-masquerade
+
+# Forward public zone 53 to 5353
+firewall-cmd --permanent --zone=public --add-forward-port=port=53:proto=udp:toport=5353
+firewall-cmd --permanent --zone=public --add-forward-port=port=53:proto=tcp:toport=5353
+
+# Forward internal to 53
+firewall-cmd --permanent --direct --add-rule ipv4 nat OUTPUT 0 -p tcp -d 127.0.0.1 --dport 53 -j REDIRECT --to-ports 5353
+firewall-cmd --permanent --direct --add-rule ipv4 nat OUTPUT 0 -p udp -d 127.0.0.1 --dport 53 -j REDIRECT --to-ports 5353
+
+# Reload
+firewall-cmd --reload
+```
+
 
 ## Troubleshooting
 
